@@ -42,3 +42,32 @@ const g = getGlobal() as any;
 
 // The add-in command functions need to be available in global scope
 g.action = action;
+
+const newTab = {
+  id: "Contoso.Tab1",
+  label: "Contoso Tab",
+  groups: [
+    {
+      id: "Contoso.Tab1.Group1",
+      label: "Contoso Group",
+      icon: "https://localhost:3000/assets/icon-32.png",
+      controls: [
+        {
+          id: "Contoso.Tab1.Group1.Control1",
+          actionId: "action",
+          type: "Button",
+          label: "Contoso Button",
+          icon: "https://localhost:3000/assets/icon-32.png",
+          enabled: true,
+          visible: true,
+        },
+      ],
+    },
+  ],
+};
+
+Office.onReady(() => {
+  Office.ribbon.requestUpdate({
+    tabs: [newTab],
+  });
+});

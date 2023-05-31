@@ -78,12 +78,11 @@ module.exports = async (env, options) => {
               }
             },
           },
+          {
+            from: "ribbon/ribbon.xml", // Add this new pattern
+            to: "ribbon/[name][ext]", // Specify the destination path for the ribbon.xml file
+          },
         ],
-      }),
-      new HtmlWebpackPlugin({
-        filename: "iap-ribbon.html",
-        template: "./src/taskpane/iap-ribbon.html",
-        chunks: ["iap-ribbon", "vendor", "polyfills"],
       }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
