@@ -61,10 +61,10 @@ function updateRibbon() {
             id: "BtnFilterData",
             enabled: g.state.isConnected,
           },
-          /*{
+          {
             id: "BtnScope",
             enabled: g.state.isConnected,
-          },*/
+          },
           {
             id: "BtnParameters",
             enabled: g.state.isConnected,
