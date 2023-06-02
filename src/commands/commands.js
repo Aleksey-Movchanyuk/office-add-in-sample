@@ -28,7 +28,28 @@ function btnUserProfile(event) {
   event.completed();
 }
 
- function btnOpenTaskpane(event) {
+function btnHelp(event) {
+  console.log("User help button pressed");
+  // Your code goes here
+
+  event.completed();
+}
+
+function btnSimulation(event) {
+  console.log("Simulation button pressed");
+  // Your code goes here
+
+  event.completed();
+}
+
+function btnMassiveSimulation(event) {
+  console.log("Massive Simulation button pressed");
+  // Your code goes here
+
+  event.completed();
+}
+
+function btnOpenTaskpane(event) {
   console.log("Open task pane button pressed");
   // Your code goes here
   SetRuntimeVisibleHelper(true);
@@ -37,7 +58,7 @@ function btnUserProfile(event) {
   event.completed();
 }
 
- function btnCloseTaskpane(event) {
+function btnCloseTaskpane(event) {
   console.log("Open task pane button pressed");
   // Your code goes here
   SetRuntimeVisibleHelper(false);
@@ -46,7 +67,14 @@ function btnUserProfile(event) {
   event.completed();
 }
 
- function btnEnableAddinStart(event) {
+function btnSettings(event) {
+  console.log("Settinhs button pressed");
+  // Your code goes here
+
+  event.completed();
+}
+
+function btnEnableAddinStart(event) {
   console.log("Enable add-in start button pressed");
   // Your code goes here
   SetStartupBehaviorHelper(true);
@@ -69,6 +97,20 @@ function btnUserProfile(event) {
   console.log("Insert data button pressed");
   // Mock code that pretends to insert data from a data source
   insertData();
+  event.completed();
+}
+
+function btnRefreshData(event) {
+  console.log("Refresh data button pressed");
+  // Mock code that pretends to insert data from a data source
+
+  event.completed();
+}
+
+function btnFilterData(event) {
+  console.log("Filter data button pressed");
+  // Mock code that pretends to insert data from a data source
+
   event.completed();
 }
 
@@ -122,10 +164,10 @@ async function insertData() {
         ["1/15/2017", "Best For You Organics Company", "Groceries", "$97"],
       ]);
 
-      if (Office.context.requirements.isSetSupported("ExcelApi", "1.2")) {
+      /*if (Office.context.requirements.isSetSupported("ExcelApi", "1.2")) {
         sheet.getUsedRange().format.autofitColumns();
         sheet.getUsedRange().format.autofitRows();
-      }
+      }*/
       context.sync().then(() => {
         monitorSheetChanges();
         return context.sync();
@@ -141,9 +183,15 @@ const g = getGlobal();
 Office.actions.associate("btnConnectService", btnConnectService);
 Office.actions.associate("btnDisconnectService", btnDisconnectService);
 Office.actions.associate("btnUserProfile", btnUserProfile);
+Office.actions.associate("btnHelp", btnHelp);
 Office.actions.associate("btnOpenTaskpane", btnOpenTaskpane);
 Office.actions.associate("btnCloseTaskpane", btnCloseTaskpane);
 Office.actions.associate("btnEnableAddinStart", btnEnableAddinStart);
 Office.actions.associate("btnDisableAddinStart", btnDisableAddinStart);
 Office.actions.associate("btnInsertData", btnInsertData);
+Office.actions.associate("btnRefreshData", btnRefreshData);
+Office.actions.associate("btnFilterData", btnFilterData);
 Office.actions.associate("btnSumData", btnSumData);
+Office.actions.associate("btnSettings", btnSettings);
+Office.actions.associate("btnSimulation", btnSimulation);
+Office.actions.associate("btnMassiveSimulation", btnMassiveSimulation);

@@ -14,8 +14,8 @@
 	<DisplayName DefaultValue="IAP" />
 	<Description DefaultValue="Integrated Analytical Platform"/>
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-	<IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-32.png" />
-    <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
+	<IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
 	<!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
 	<!--<SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]">-->
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
@@ -34,7 +34,7 @@
 		</Sets>
 	</Requirements>
 	<DefaultSettings>
-		<SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
+		<SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
 	</DefaultSettings>
 	<!-- End TaskPane Mode integration.  -->
 	<Permissions>ReadWriteDocument</Permissions>
@@ -47,15 +47,15 @@
 			<!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
 			<Host xsi:type="Workbook">
 				<Runtimes>
-					<Runtime resid="ContosoAddin.Url" lifetime="long" />
+					<Runtime resid="IAPAddin.Url" lifetime="long" />
 				</Runtimes>
 				<AllFormFactors>
 					<ExtensionPoint xsi:type="CustomFunctions">
 						<Script>
-							<SourceLocation resid="ContosoAddin.Url"/>
+							<SourceLocation resid="IAPAddin.Url"/>
 						</Script>
 						<Page>
-							<SourceLocation resid="ContosoAddin.Url"/>
+							<SourceLocation resid="IAPAddin.Url"/>
 						</Page>
 						<Metadata>
 							<SourceLocation resid="Functions.Metadata.Url"/>
@@ -76,7 +76,7 @@
 					</GetStarted>
 					<!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.
             Think of the FunctionFile as the code behind ExecuteFunction. -->
-					<FunctionFile resid="ContosoAddin.Url" />
+					<FunctionFile resid="IAPAddin.Url" />
 					<!-- PrimaryCommandSurface is the main Office Ribbon. -->
 					<ExtensionPoint xsi:type="PrimaryCommandSurface">
 						<!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
@@ -144,6 +144,36 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
+
+								<Control xsi:type="Button" id="BtnHelp">
+									<Label resid="BtnHelp.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnHelp.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnHelp.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconHelp.16x16"/>
+										<bt:Image size="32" resid="IconHelp.32x32"/>
+										<bt:Image size="80" resid="IconHelp.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnhelp</FunctionName>
+									</Action>
+									<Enabled>true</Enabled>
+								</Control>
+
+							</Group>
+
+							<Group id="DataGroup">
+								<Label resid="DataGroup.Label"/>
+								<Icon>
+									<bt:Image size="16" resid="Icon.16x16"/>
+									<bt:Image size="32" resid="Icon.32x32"/>
+									<bt:Image size="80" resid="Icon.80x80"/>
+								</Icon>
 								<Control xsi:type="Button" id="BtnInsertData">
 									<Label resid="BtnInsertData.Label" />
 									<Supertip>
@@ -153,13 +183,51 @@
 										<Description resid="BtnInsertData.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="16" resid="IconTable.16x16"/>
+										<bt:Image size="32" resid="IconTable.32x32"/>
+										<bt:Image size="80" resid="IconTable.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
 										<FunctionName>btninsertdata</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								<Control xsi:type="Button" id="BtnRefreshData">
+									<Label resid="BtnRefreshData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnRefreshData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnRefreshData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconRefresh.16x16"/>
+										<bt:Image size="32" resid="IconRefresh.32x32"/>
+										<bt:Image size="80" resid="IconRefresh.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnrefreshdata</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								<Control xsi:type="Button" id="BtnFilterData">
+									<Label resid="BtnFilterData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnFilterData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnFilterData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconFilter.16x16"/>
+										<bt:Image size="32" resid="IconFilter.32x32"/>
+										<bt:Image size="80" resid="IconFilter.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnfilterdata</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -182,53 +250,55 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-							
 							</Group>
-							<Group id="StartupGroup">
-								<Label resid="StartupGroup.Label"/>
+
+							<Group id="SimulationGroup">
+								<Label resid="SimulationGroup.Label"/>
 								<Icon>
 									<bt:Image size="16" resid="Icon.16x16"/>
 									<bt:Image size="32" resid="Icon.32x32"/>
 									<bt:Image size="80" resid="Icon.80x80"/>
 								</Icon>
-								<Control xsi:type="Button" id="BtnEnableAddinStart">
-									<Label resid="BtnEnableAddinStart.Label" />
+								<Control xsi:type="Button" id="BtnSimulation">
+									<Label resid="BtnSimulation.Label" />
 									<Supertip>
 										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnEnableAddinStart.Label" />
+										<Title resid="BtnSimulation.Label" />
 										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnEnableAddinStart.Tooltip" />
+										<Description resid="BtnSimulation.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="16" resid="IconSimulation.16x16"/>
+										<bt:Image size="32" resid="IconSimulation.32x32"/>
+										<bt:Image size="80" resid="IconSimulation.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnenableaddinstart</FunctionName>
+										<FunctionName>btnsimulation</FunctionName>
 									</Action>
+									<Enabled>false</Enabled>
 								</Control>
-								<Control xsi:type="Button" id="BtnDisableAddinStart">
-									<Label resid="BtnDisableAddinStart.Label" />
+								<Control xsi:type="Button" id="BtnMassiveSimulation">
+									<Label resid="BtnMassiveSimulation.Label" />
 									<Supertip>
 										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnDisableAddinStart.Label" />
+										<Title resid="BtnMassiveSimulation.Label" />
 										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnDisableAddinStart.Tooltip" />
+										<Description resid="BtnMassiveSimulation.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="16" resid="IconMassiveSimulation.16x16"/>
+										<bt:Image size="32" resid="IconMassiveSimulation.32x32"/>
+										<bt:Image size="80" resid="IconMassiveSimulation.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btndisableaddinstart</FunctionName>
+										<FunctionName>btnmassivesimulation</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
 							</Group>
+
 							<Group id="TaskpaneGroup">
 								<Label resid="TaskpaneGroup.Label"/>
 								<Icon>
@@ -277,6 +347,34 @@
 								</Control>
 
 							</Group>
+							<Group id="SettingsGroup">
+								<Label resid="SettingsGroup.Label"/>
+								<Icon>
+									<bt:Image size="16" resid="Icon.16x16"/>
+									<bt:Image size="32" resid="Icon.32x32"/>
+									<bt:Image size="80" resid="Icon.80x80"/>
+								</Icon>
+								<Control xsi:type="Button" id="BtnSettings">
+									<Label resid="BtnSettings.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnSettings.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnSettings.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconSettings.16x16"/>
+										<bt:Image size="32" resid="IconSettings.32x32"/>
+										<bt:Image size="80" resid="IconSettings.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnsettings</FunctionName>
+									</Action>
+									
+								</Control>
+
+							</Group>
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
 					</ExtensionPoint>
@@ -286,80 +384,117 @@
 		<!-- You can use resources across hosts and form factors. -->
 		<Resources>
 			<bt:Images>
-				<bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-16.png"/>
-				<bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-32.png"/>
-				<bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
+				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
+				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
 
-				<bt:Image id="IconDisconnect.16x16" DefaultValue="https://localhost:3000/assets/icon-disconnect-16.png"/>
-				<bt:Image id="IconDisconnect.32x32" DefaultValue="https://localhost:3000/assets/icon-disconnect-32.png"/>
-				<bt:Image id="IconDisconnect.80x80" DefaultValue="https://localhost:3000/assets/icon-disconnect-80.png"/>
+				<bt:Image id="IconDisconnect.16x16" DefaultValue="https://localhost:3000/assets/icon-disconnect-16.png" />
+				<bt:Image id="IconDisconnect.32x32" DefaultValue="https://localhost:3000/assets/icon-disconnect-32.png" />
+				<bt:Image id="IconDisconnect.80x80" DefaultValue="https://localhost:3000/assets/icon-disconnect-80.png" />
 
-				<bt:Image id="IconUserProfile.16x16" DefaultValue="https://localhost:3000/assets/icon-user-profile-16.png"/>
-				<bt:Image id="IconUserProfile.32x32" DefaultValue="https://localhost:3000/assets/icon-user-profile-32.png"/>
-				<bt:Image id="IconUserProfile.80x80" DefaultValue="https://localhost:3000/assets/icon-user-profile-80.png"/>
+				<bt:Image id="IconUserProfile.16x16" DefaultValue="https://localhost:3000/assets/icon-user-profile-16.png" />
+				<bt:Image id="IconUserProfile.32x32" DefaultValue="https://localhost:3000/assets/icon-user-profile-32.png" />
+				<bt:Image id="IconUserProfile.80x80" DefaultValue="https://localhost:3000/assets/icon-user-profile-80.png" />
 
-				<bt:Image id="IconClosePane.16x16" DefaultValue="https://localhost:3000/assets/icon-close-pane-16.png"/>
-				<bt:Image id="IconClosePane.32x32" DefaultValue="https://localhost:3000/assets/icon-close-pane-32.png"/>
-				<bt:Image id="IconClosePane.80x80" DefaultValue="https://localhost:3000/assets/icon-close-pane-80.png"/>
+				<bt:Image id="IconHelp.16x16" DefaultValue="https://localhost:3000/assets/icon-help-16.png" />
+				<bt:Image id="IconHelp.32x32" DefaultValue="https://localhost:3000/assets/icon-help-32.png" />
+				<bt:Image id="IconHelp.80x80" DefaultValue="https://localhost:3000/assets/icon-help-80.png" />
 
-				<bt:Image id="IconOpenPane.16x16" DefaultValue="https://localhost:3000/assets/icon-open-pane-16.png"/>
-				<bt:Image id="IconOpenPane.32x32" DefaultValue="https://localhost:3000/assets/icon-open-pane-32.png"/>
-				<bt:Image id="IconOpenPane.80x80" DefaultValue="https://localhost:3000/assets/icon-open-pane-80.png"/>
+				<bt:Image id="IconTable.16x16" DefaultValue="https://localhost:3000/assets/icon-table-16.png" />
+				<bt:Image id="IconTable.32x32" DefaultValue="https://localhost:3000/assets/icon-table-32.png" />
+				<bt:Image id="IconTable.80x80" DefaultValue="https://localhost:3000/assets/icon-table-80.png" />
 
-				<bt:Image id="IconRefresh.16x16" DefaultValue="https://localhost:3000/assets/icon-refresh-16.png"/>
-				<bt:Image id="IconRefresh.32x32" DefaultValue="https://localhost:3000/assets/icon-refresh-32.png"/>
-				<bt:Image id="IconRefresh.80x80" DefaultValue="https://localhost:3000/assets/icon-refresh-80.png"/>
+				<bt:Image id="IconRefresh.16x16" DefaultValue="https://localhost:3000/assets/icon-refresh-16.png" />
+				<bt:Image id="IconRefresh.32x32" DefaultValue="https://localhost:3000/assets/icon-refresh-32.png" />
+				<bt:Image id="IconRefresh.80x80" DefaultValue="https://localhost:3000/assets/icon-refresh-80.png" />
 
-				<bt:Image id="IconFilter.16x16" DefaultValue="https://localhost:3000/assets/icon-filter-16.png"/>
-				<bt:Image id="IconFilter.32x32" DefaultValue="https://localhost:3000/assets/icon-filter-32.png"/>
-				<bt:Image id="IconFilter.80x80" DefaultValue="https://localhost:3000/assets/icon-filter-80.png"/>
+				<bt:Image id="IconFilter.16x16" DefaultValue="https://localhost:3000/assets/icon-filter-16.png" />
+				<bt:Image id="IconFilter.32x32" DefaultValue="https://localhost:3000/assets/icon-filter-32.png" />
+				<bt:Image id="IconFilter.80x80" DefaultValue="https://localhost:3000/assets/icon-filter-80.png" />
+
+				<bt:Image id="IconSimulation.16x16" DefaultValue="https://localhost:3000/assets/icon-simulation-16.png" />
+				<bt:Image id="IconSimulation.32x32" DefaultValue="https://localhost:3000/assets/icon-simulation-32.png" />
+				<bt:Image id="IconSimulation.80x80" DefaultValue="https://localhost:3000/assets/icon-simulation-80.png" />
+
+				<bt:Image id="IconMassiveSimulation.16x16" DefaultValue="https://localhost:3000/assets/icon-massive-simulation-16.png" />
+				<bt:Image id="IconMassiveSimulation.32x32" DefaultValue="https://localhost:3000/assets/icon-massive-simulation-32.png" />
+				<bt:Image id="IconMassiveSimulation.80x80" DefaultValue="https://localhost:3000/assets/icon-massive-simulation-80.png" />
+
+				<bt:Image id="IconOpenPane.16x16" DefaultValue="https://localhost:3000/assets/icon-open-pane-16.png" />
+				<bt:Image id="IconOpenPane.32x32" DefaultValue="https://localhost:3000/assets/icon-open-pane-32.png" />
+				<bt:Image id="IconOpenPane.80x80" DefaultValue="https://localhost:3000/assets/icon-open-pane-80.png" />
+
+				<bt:Image id="IconClosePane.16x16" DefaultValue="https://localhost:3000/assets/icon-close-pane-16.png" />
+				<bt:Image id="IconClosePane.32x32" DefaultValue="https://localhost:3000/assets/icon-close-pane-32.png" />
+				<bt:Image id="IconClosePane.80x80" DefaultValue="https://localhost:3000/assets/icon-close-pane-80.png" />
+
+				<bt:Image id="IconSettings.16x16" DefaultValue="https://localhost:3000/assets/icon-settings-16.png" />
+				<bt:Image id="IconSettings.32x32" DefaultValue="https://localhost:3000/assets/icon-settings-32.png" />
+				<bt:Image id="IconSettings.80x80" DefaultValue="https://localhost:3000/assets/icon-settings-80.png" />
 
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/functions/functions.json"/>
-				<bt:Url id="Commands.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/commands/commands.html"/>
-				<bt:Url id="ContosoAddin.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html"/>
+				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json" />
+				<bt:Url id="IAPAddin.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->
 			<bt:ShortStrings>
 				<bt:String id="TaskpaneButton.Label" DefaultValue="Open Add-in" />
 				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
 				<bt:String id="GetStarted.Title" DefaultValue="IAP add-in has loaded successfully." />
-				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
-				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in"/>
-				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out"/>
-				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Load on doc open"/>
-				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="No load behavior"/>
-				<bt:String id="BtnConnectService.Label" DefaultValue="Connect service"/>
-				<bt:String id="BtnDisConnectService.Label" DefaultValue="Disconnect service"/>
-				<bt:String id="BtnUserProfile.Label" DefaultValue="User profile"/>
-				<bt:String id="BtnInsertData.Label" DefaultValue="Insert data"/>
-				<bt:String id='AuthGroup.Label' DefaultValue='Authentication'/>
-				<bt:String id="CommandsGroup.Label" DefaultValue="IAP"/>
-				<bt:String id='StartupGroup.Label' DefaultValue='Startup behavior'/>
-				<bt:String id='ServiceGroup.Label' DefaultValue='Services'/>
-				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane'/>
-				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane"/>
-				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane"/>
-				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data"/>
-				<bt:String id="BtnSumData.Label" DefaultValue="Sum"/>
+				<bt:String id="Functions.Namespace" DefaultValue="IAPSHARE" />
+
+				<bt:String id='AuthGroup.Label' DefaultValue='Authentication' />
+				<bt:String id="CommandsGroup.Label" DefaultValue="IAP" />
+				<bt:String id='DataGroup.Label' DefaultValue='Data commands' />
+				<bt:String id='SimulationGroup.Label' DefaultValue='Simulation commands' />
+				<bt:String id='ServiceGroup.Label' DefaultValue='Services' />
+				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane' />
+				<bt:String id='SettingsGroup.Label' DefaultValue='Settings' />
+
+				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in" />
+				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out" />
+				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Load on doc open" />
+				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="No load behavior" />
+				<bt:String id="BtnConnectService.Label" DefaultValue="Connect service" />
+				<bt:String id="BtnDisConnectService.Label" DefaultValue="Disconnect service" />
+				<bt:String id="BtnUserProfile.Label" DefaultValue="User profile" />
+				<bt:String id="BtnHelp.Label" DefaultValue="Help" />
+				<bt:String id="BtnInsertData.Label" DefaultValue="Open data" />
+				<bt:String id="BtnRefreshData.Label" DefaultValue="Refresh data" />
+				<bt:String id="BtnFilterData.Label" DefaultValue="Filter data" />
+				<bt:String id="BtnSimulation.Label" DefaultValue="Simulation" />
+				<bt:String id="BtnMassiveSimulation.Label" DefaultValue="Massive Simulation" />
+
+				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane" />
+				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane" />
+				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data" />
+				<bt:String id="BtnSumData.Label" DefaultValue="Scope" />
+				<bt:String id="BtnSettings.Label" DefaultValue="Settings" />
+
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Add-in will load and start running as soon as document opens."/>
-				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Add-in will have no load document load beahvior."/>
-				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service"/>
-				<bt:String id="BtnDisConnectService.Tooltip" DefaultValue="Disconnect from backend data service"/>
-				<bt:String id="BtnUserProfile.Tooltip" DefaultValue="Show the dialog for user profile"/>
-				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Insert data from backend data service"/>
-				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane"/>
-				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane"/>
-				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data"/>
-				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data"/>
+				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Add-in will load and start running as soon as document opens." />
+				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Add-in will have no load document load beahvior." />
+				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service" />
+				<bt:String id="BtnDisConnectService.Tooltip" DefaultValue="Disconnect from backend data service" />
+				<bt:String id="BtnUserProfile.Tooltip" DefaultValue="Show the dialog for user profile" />
+				<bt:String id="BtnHelp.Tooltip" DefaultValue="Show the help dialog" />
+				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Open data from backend data service" />
+				<bt:String id="BtnRefreshData.Tooltip" DefaultValue="Refresh data from backend data service" />
+				<bt:String id="BtnFilterData.Tooltip" DefaultValue="Filter data from backend data service" />
+				<bt:String id="BtnSimulation.Tooltip" DefaultValue="Start simulation" />
+				<bt:String id="BtnMassiveSimulation.Tooltip" DefaultValue="Show massive simulation dialog" />
+				<bt:String id="BtnSettings.Tooltip" DefaultValue="Show settings dialog" />
+				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane" />
+				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane" />
+				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data" />
+				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data" />
+				<bt:String id="BtnSettings.Tooltip" DefaultValue="Show settings dialog" />
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

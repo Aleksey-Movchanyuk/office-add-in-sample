@@ -54,8 +54,24 @@ function updateRibbon() {
             enabled: g.state.isConnected,
           },
           {
+            id: "BtnRefreshData",
+            enabled: g.state.isConnected,
+          },
+          {
+            id: "BtnFilterData",
+            enabled: g.state.isConnected,
+          },
+          {
             id: "BtnSumData",
             enabled: g.state.isSumEnabled,
+          },
+          {
+            id: "BtnSimulation",
+            enabled: g.state.isConnected,
+          },
+          {
+            id: "BtnMassiveSimulation",
+            enabled: g.state.isConnected,
           },
           {
             id: "BtnEnableAddinStart",
@@ -93,6 +109,8 @@ async function connectService() {
   location.hostname +
   (location.port ? ":" + location.port : "") + path +
   "/dialog/connect.html";
+
+
 
   //pop up a dialog
   let connectDialog;
@@ -134,7 +152,7 @@ function generateCustomFunction(selectedOption) {
 
       //let selectedOption = 'Communications';
 
-      range.values = [['=CONTOSOSHARE.GETDATA("' + selectedOption + '")']];
+      range.values = [['=IAPSHARE.GETDATA("' + selectedOption + '")']];
       range.format.autofitColumns();
       return context.sync();
     });

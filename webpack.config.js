@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://www.iap-prod.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -70,6 +70,10 @@ module.exports = async (env, options) => {
           {
             from: "src/taskpane/sampleData.json",
             to: "sampleData.json",
+          },
+          {
+            from: "src/functions/functions.json",
+            to: "functions.json",
           },
           {
             from: "manifest*.xml",
