@@ -189,7 +189,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btninsertdata</FunctionName>
+										<FunctionName>btnInsertData</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -208,7 +208,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnrefreshdata</FunctionName>
+										<FunctionName>btnRefreshData</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -227,7 +227,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnfilterdata</FunctionName>
+										<FunctionName>btnFilterData</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -250,6 +250,26 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
+								<Control xsi:type="Button" id="BtnParameters">
+									<Label resid="BtnParameters.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnParameters.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnParameters.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconParameters.16x16"/>
+										<bt:Image size="32" resid="IconParameters.32x32"/>
+										<bt:Image size="80" resid="IconParameters.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnParameters</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+
 							</Group>
 
 							<Group id="SimulationGroup">
@@ -274,7 +294,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnsimulation</FunctionName>
+										<FunctionName>btnSimulation</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -293,7 +313,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnmassivesimulation</FunctionName>
+										<FunctionName>btnMassiveSimulation</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -321,7 +341,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnopentaskpane</FunctionName>
+										<FunctionName>btnOpenTaskpane</FunctionName>
 									</Action>
 									
 								</Control>
@@ -341,12 +361,12 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnclosetaskpane</FunctionName>
+										<FunctionName>btnCloseTaskpane</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-
 							</Group>
+
 							<Group id="SettingsGroup">
 								<Label resid="SettingsGroup.Label"/>
 								<Icon>
@@ -369,7 +389,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnsettings</FunctionName>
+										<FunctionName>btnSettings</FunctionName>
 									</Action>
 									
 								</Control>
@@ -412,6 +432,10 @@
 				<bt:Image id="IconFilter.32x32" DefaultValue="https://localhost:3000/assets/icon-filter-32.png" />
 				<bt:Image id="IconFilter.80x80" DefaultValue="https://localhost:3000/assets/icon-filter-80.png" />
 
+				<bt:Image id="IconParameters.16x16" DefaultValue="https://localhost:3000/assets/icon-parameters-16.png" />
+				<bt:Image id="IconParameters.32x32" DefaultValue="https://localhost:3000/assets/icon-parameters-32.png" />
+				<bt:Image id="IconParameters.80x80" DefaultValue="https://localhost:3000/assets/icon-parameters-80.png" />
+
 				<bt:Image id="IconSimulation.16x16" DefaultValue="https://localhost:3000/assets/icon-simulation-16.png" />
 				<bt:Image id="IconSimulation.32x32" DefaultValue="https://localhost:3000/assets/icon-simulation-32.png" />
 				<bt:Image id="IconSimulation.80x80" DefaultValue="https://localhost:3000/assets/icon-simulation-80.png" />
@@ -447,8 +471,8 @@
 
 				<bt:String id='AuthGroup.Label' DefaultValue='Authentication' />
 				<bt:String id="CommandsGroup.Label" DefaultValue="IAP" />
-				<bt:String id='DataGroup.Label' DefaultValue='Data commands' />
-				<bt:String id='SimulationGroup.Label' DefaultValue='Simulation commands' />
+				<bt:String id='DataGroup.Label' DefaultValue='Data' />
+				<bt:String id='SimulationGroup.Label' DefaultValue='Simulation' />
 				<bt:String id='ServiceGroup.Label' DefaultValue='Services' />
 				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane' />
 				<bt:String id='SettingsGroup.Label' DefaultValue='Settings' />
@@ -473,6 +497,8 @@
 				<bt:String id="BtnSumData.Label" DefaultValue="Scope" />
 				<bt:String id="BtnSettings.Label" DefaultValue="Settings" />
 
+				<bt:String id="BtnParameters.Label" DefaultValue="Parameters" />
+
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
@@ -495,6 +521,8 @@
 				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data" />
 				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data" />
 				<bt:String id="BtnSettings.Tooltip" DefaultValue="Show settings dialog" />
+				<bt:String id="BtnParameters.Tooltip" DefaultValue="Show parameters dialog" />
+
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

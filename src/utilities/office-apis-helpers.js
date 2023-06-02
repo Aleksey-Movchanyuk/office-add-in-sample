@@ -66,6 +66,10 @@ function updateRibbon() {
             enabled: g.state.isSumEnabled,
           },
           {
+            id: "BtnOptions",
+            enabled: g.state.isConnected,
+          },
+          {
             id: "BtnSimulation",
             enabled: g.state.isConnected,
           },

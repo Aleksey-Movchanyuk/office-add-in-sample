@@ -1,6 +1,13 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+function doNothing() {
+  // This function does nothing.
+  console.log("Do nothing");
+
+  event.completed();
+}
+
 function btnConnectService(event) {
   console.log("Connect service button pressed");
   // Your code goes here
@@ -114,6 +121,13 @@ function btnFilterData(event) {
   event.completed();
 }
 
+function btnParameters(event) {
+  console.log("Parameters data button pressed");
+  // Mock code that pretends to insert data from a data source
+
+  event.completed();
+}
+
  async function btnSumData(event) {
   console.log("Insert data button pressed");
   // Mock code that pretends to insert data from a data source
@@ -179,7 +193,7 @@ async function insertData() {
 }
 
 const g = getGlobal();
-  
+
 Office.actions.associate("btnConnectService", btnConnectService);
 Office.actions.associate("btnDisconnectService", btnDisconnectService);
 Office.actions.associate("btnUserProfile", btnUserProfile);
@@ -191,7 +205,11 @@ Office.actions.associate("btnDisableAddinStart", btnDisableAddinStart);
 Office.actions.associate("btnInsertData", btnInsertData);
 Office.actions.associate("btnRefreshData", btnRefreshData);
 Office.actions.associate("btnFilterData", btnFilterData);
+Office.actions.associate("btnParameters", btnParameters);
 Office.actions.associate("btnSumData", btnSumData);
 Office.actions.associate("btnSettings", btnSettings);
 Office.actions.associate("btnSimulation", btnSimulation);
 Office.actions.associate("btnMassiveSimulation", btnMassiveSimulation);
+
+Office.actions.associate("doNothing", doNothing);
+

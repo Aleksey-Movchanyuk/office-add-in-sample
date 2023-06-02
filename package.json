@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "core-js": "^3.9.1",
+    "office-addin-validator": "^1.0.5",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
