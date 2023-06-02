@@ -231,22 +231,22 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-								<Control xsi:type="Button" id="BtnSumData">
-									<Label resid="BtnSumData.Label" />
+								<Control xsi:type="Button" id="BtnScope">
+									<Label resid="BtnScope.Label" />
 									<Supertip>
 										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnSumData.Label" />
+										<Title resid="BtnScope.Label" />
 										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnSumData.Tooltip" />
+										<Description resid="BtnScope.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="16" resid="IconScope.16x16"/>
+										<bt:Image size="32" resid="IconScope.32x32"/>
+										<bt:Image size="80" resid="IconScope.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnsumdata</FunctionName>
+										<FunctionName>btnScope</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
@@ -391,10 +391,9 @@
 									<Action xsi:type="ExecuteFunction">
 										<FunctionName>btnSettings</FunctionName>
 									</Action>
-									
 								</Control>
-
 							</Group>
+
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
 					</ExtensionPoint>
@@ -432,6 +431,10 @@
 				<bt:Image id="IconFilter.32x32" DefaultValue="https://localhost:3000/assets/icon-filter-32.png" />
 				<bt:Image id="IconFilter.80x80" DefaultValue="https://localhost:3000/assets/icon-filter-80.png" />
 
+				<bt:Image id="IconScope.16x16" DefaultValue="https://localhost:3000/assets/icon-scope-16.png" />
+				<bt:Image id="IconScope.32x32" DefaultValue="https://localhost:3000/assets/icon-scope-32.png" />
+				<bt:Image id="IconScope.80x80" DefaultValue="https://localhost:3000/assets/icon-scope-80.png" />
+
 				<bt:Image id="IconParameters.16x16" DefaultValue="https://localhost:3000/assets/icon-parameters-16.png" />
 				<bt:Image id="IconParameters.32x32" DefaultValue="https://localhost:3000/assets/icon-parameters-32.png" />
 				<bt:Image id="IconParameters.80x80" DefaultValue="https://localhost:3000/assets/icon-parameters-80.png" />
@@ -460,7 +463,7 @@
 			<bt:Urls>
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
 				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json" />
-				<bt:Url id="IAPAddin.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
+				<bt:Url id="IAPAddin.Url" DefaultValue="https://localhost:3000/taskpane.html" />
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->
 			<bt:ShortStrings>
@@ -469,7 +472,6 @@
 				<bt:String id="GetStarted.Title" DefaultValue="IAP add-in has loaded successfully." />
 				<bt:String id="Functions.Namespace" DefaultValue="IAPSHARE" />
 
-				<bt:String id='AuthGroup.Label' DefaultValue='Authentication' />
 				<bt:String id="CommandsGroup.Label" DefaultValue="IAP" />
 				<bt:String id='DataGroup.Label' DefaultValue='Data' />
 				<bt:String id='SimulationGroup.Label' DefaultValue='Simulation' />
@@ -477,10 +479,6 @@
 				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane' />
 				<bt:String id='SettingsGroup.Label' DefaultValue='Settings' />
 
-				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in" />
-				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out" />
-				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Load on doc open" />
-				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="No load behavior" />
 				<bt:String id="BtnConnectService.Label" DefaultValue="Connect service" />
 				<bt:String id="BtnDisConnectService.Label" DefaultValue="Disconnect service" />
 				<bt:String id="BtnUserProfile.Label" DefaultValue="User profile" />
@@ -488,24 +486,18 @@
 				<bt:String id="BtnInsertData.Label" DefaultValue="Open data" />
 				<bt:String id="BtnRefreshData.Label" DefaultValue="Refresh data" />
 				<bt:String id="BtnFilterData.Label" DefaultValue="Filter data" />
+				<bt:String id="BtnScope.Label" DefaultValue="Scope" />
+				<bt:String id="BtnParameters.Label" DefaultValue="Parameters" />
 				<bt:String id="BtnSimulation.Label" DefaultValue="Simulation" />
 				<bt:String id="BtnMassiveSimulation.Label" DefaultValue="Massive Simulation" />
-
 				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane" />
 				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane" />
-				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data" />
-				<bt:String id="BtnSumData.Label" DefaultValue="Scope" />
 				<bt:String id="BtnSettings.Label" DefaultValue="Settings" />
-
-				<bt:String id="BtnParameters.Label" DefaultValue="Parameters" />
-
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Add-in will load and start running as soon as document opens." />
-				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Add-in will have no load document load beahvior." />
 				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service" />
 				<bt:String id="BtnDisConnectService.Tooltip" DefaultValue="Disconnect from backend data service" />
 				<bt:String id="BtnUserProfile.Tooltip" DefaultValue="Show the dialog for user profile" />
@@ -513,16 +505,13 @@
 				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Open data from backend data service" />
 				<bt:String id="BtnRefreshData.Tooltip" DefaultValue="Refresh data from backend data service" />
 				<bt:String id="BtnFilterData.Tooltip" DefaultValue="Filter data from backend data service" />
+				<bt:String id="BtnScope.Tooltip" DefaultValue="Show scope dialog" />
+				<bt:String id="BtnParameters.Tooltip" DefaultValue="Show parameters dialog" />
 				<bt:String id="BtnSimulation.Tooltip" DefaultValue="Start simulation" />
 				<bt:String id="BtnMassiveSimulation.Tooltip" DefaultValue="Show massive simulation dialog" />
-				<bt:String id="BtnSettings.Tooltip" DefaultValue="Show settings dialog" />
 				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane" />
 				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane" />
-				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data" />
-				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data" />
 				<bt:String id="BtnSettings.Tooltip" DefaultValue="Show settings dialog" />
-				<bt:String id="BtnParameters.Tooltip" DefaultValue="Show parameters dialog" />
-
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

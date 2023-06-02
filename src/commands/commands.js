@@ -1,13 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-function doNothing() {
-  // This function does nothing.
-  console.log("Do nothing");
-
-  event.completed();
-}
-
 function btnConnectService(event) {
   console.log("Connect service button pressed");
   // Your code goes here
@@ -38,6 +31,41 @@ function btnUserProfile(event) {
 function btnHelp(event) {
   console.log("User help button pressed");
   // Your code goes here
+
+  event.completed();
+}
+
+function btnInsertData(event) {
+  console.log("Insert data button pressed");
+  // Mock code that pretends to insert data from a data source
+  insertData();
+  event.completed();
+}
+
+function btnRefreshData(event) {
+  console.log("Refresh data button pressed");
+  // Mock code that pretends to insert data from a data source
+
+  event.completed();
+}
+
+function btnFilterData(event) {
+  console.log("Filter data button pressed");
+  // Mock code that pretends to insert data from a data source
+
+  event.completed();
+}
+
+function btnScope(event) {
+  console.log("Scope data button pressed");
+  // Mock code that pretends to insert data from a data source
+
+  event.completed();
+}
+
+function btnParameters(event) {
+  console.log("Parameters data button pressed");
+  // Mock code that pretends to insert data from a data source
 
   event.completed();
 }
@@ -75,87 +103,9 @@ function btnCloseTaskpane(event) {
 }
 
 function btnSettings(event) {
-  console.log("Settinhs button pressed");
+  console.log("Settings button pressed");
   // Your code goes here
 
-  event.completed();
-}
-
-function btnEnableAddinStart(event) {
-  console.log("Enable add-in start button pressed");
-  // Your code goes here
-  SetStartupBehaviorHelper(true);
-  g.state.isStartOnDocOpen = true;
-  updateRibbon();
-  event.completed();
-}
-
- function btnDisableAddinStart(event) {
-  console.log("Disable add-in start button pressed");
-  // Your code goes here
-  SetStartupBehaviorHelper(false);
-  g.state.isStartOnDocOpen = false;
-  updateRibbon();
-
-  event.completed();
-}
-
- function btnInsertData(event) {
-  console.log("Insert data button pressed");
-  // Mock code that pretends to insert data from a data source
-  insertData();
-  event.completed();
-}
-
-function btnRefreshData(event) {
-  console.log("Refresh data button pressed");
-  // Mock code that pretends to insert data from a data source
-
-  event.completed();
-}
-
-function btnFilterData(event) {
-  console.log("Filter data button pressed");
-  // Mock code that pretends to insert data from a data source
-
-  event.completed();
-}
-
-function btnParameters(event) {
-  console.log("Parameters data button pressed");
-  // Mock code that pretends to insert data from a data source
-
-  event.completed();
-}
-
- async function btnSumData(event) {
-  console.log("Insert data button pressed");
-  // Mock code that pretends to insert data from a data source
-  let address = g.state.selectionAddress;
-  await Excel.run((context) => {
-    let sheet = context.workbook.worksheets.getActiveWorksheet();
-    let range = sheet.getRange(address);
-    range.load("values");
-
-    let sum = 0;
-    return context.sync().then(() => {
-      range.values.forEach((v) => {
-        let vnumber = +v.toString();
-        sum += vnumber;
-      });
-
-      return context.sync().then(() => {
-        let sheet = context.workbook.worksheets.getActiveWorksheet();
-
-        let range = sheet.getRange("F1");
-        range.values = [[sum]];
-        range.format.autofitColumns();
-        event.completed();
-        console.log(sum);
-        return context.sync();
-      });
-    });
-  });
   event.completed();
 }
 
@@ -192,24 +142,27 @@ async function insertData() {
   }
 }
 
+
+
 const g = getGlobal();
 
 Office.actions.associate("btnConnectService", btnConnectService);
 Office.actions.associate("btnDisconnectService", btnDisconnectService);
 Office.actions.associate("btnUserProfile", btnUserProfile);
 Office.actions.associate("btnHelp", btnHelp);
-Office.actions.associate("btnOpenTaskpane", btnOpenTaskpane);
-Office.actions.associate("btnCloseTaskpane", btnCloseTaskpane);
-Office.actions.associate("btnEnableAddinStart", btnEnableAddinStart);
-Office.actions.associate("btnDisableAddinStart", btnDisableAddinStart);
+
 Office.actions.associate("btnInsertData", btnInsertData);
 Office.actions.associate("btnRefreshData", btnRefreshData);
 Office.actions.associate("btnFilterData", btnFilterData);
+Office.actions.associate("btnScope", btnScope);
 Office.actions.associate("btnParameters", btnParameters);
-Office.actions.associate("btnSumData", btnSumData);
-Office.actions.associate("btnSettings", btnSettings);
+
 Office.actions.associate("btnSimulation", btnSimulation);
 Office.actions.associate("btnMassiveSimulation", btnMassiveSimulation);
 
-Office.actions.associate("doNothing", doNothing);
+Office.actions.associate("btnOpenTaskpane", btnOpenTaskpane);
+Office.actions.associate("btnCloseTaskpane", btnCloseTaskpane);
+
+Office.actions.associate("btnSettings", btnSettings);
+
 

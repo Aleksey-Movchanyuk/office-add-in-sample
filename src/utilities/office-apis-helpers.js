@@ -61,12 +61,12 @@ function updateRibbon() {
             id: "BtnFilterData",
             enabled: g.state.isConnected,
           },
+          /*{
+            id: "BtnScope",
+            enabled: g.state.isConnected,
+          },*/
           {
-            id: "BtnSumData",
-            enabled: g.state.isSumEnabled,
-          },
-          {
-            id: "BtnOptions",
+            id: "BtnParameters",
             enabled: g.state.isConnected,
           },
           {
@@ -76,14 +76,6 @@ function updateRibbon() {
           {
             id: "BtnMassiveSimulation",
             enabled: g.state.isConnected,
-          },
-          {
-            id: "BtnEnableAddinStart",
-            enabled: !g.state.isStartOnDocOpen,
-          },
-          {
-            id: "BtnDisableAddinStart",
-            enabled: g.state.isStartOnDocOpen,
           },
           {
             id: "BtnOpenTaskpane",
