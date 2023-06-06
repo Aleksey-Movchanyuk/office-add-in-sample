@@ -156,20 +156,26 @@ async function insertData() {
       ];
   
       expensesTable.rows.add(null /*add rows to the end of the table*/, [
-        ["▼ Total", "", "", "", "", 600, 640, 650, 675, 710, 740, 770, 800, 830, 860, 890, 920, 950, 980, 1010, 1040, 1070, 1100, 1130, 1160, 1190, 1220, 1250, 1280, 1310, 1340, 1370, 1400],
-        ["▶ North America", "Product A", "Brand X", "Size 1", "Fact 1", 100, 120, 110, 115, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360],
-        ["▶ Europe", "Product B", "Brand Y", "Size 2", "Fact 2", 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470],
-        ["▶ Asia", "Product C", "Brand Z", "Size 3", "Fact 3", 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570],
+        ["▼ Geography Total", "▶ Product Total", "Brand Total", "Size Total", "Fact A", 600, 640, 650, 675, 710, 740, 770, 800, 830, 860, 890, 920, 950, 980, 1010, 1040, 1070, 1100, 1130, 1160, 1190, 1220, 1250, 1280, 1310, 1340, 1370, 1400],
+        ["▶ North America", "Product Total", "Brand Total", "Size Total", "Fact A", 100, 120, 110, 115, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360],
+        ["▶ Europe", "Product Total", "Brand Total", "Size Total", "Fact A", 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470],
+        ["▶ Asia", "Product Total", "Brand Total", "Size Total", "Fact A", 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570],
       ]);
   
       // Add the Table Style
       expensesTable.style = "TableStyleLight9";
 
-      // Get the range of cells you want to format.
+      // Get the range of cells that allow to edit data.
       let range = sheet.getRange("R2:Y5");
-
-      // Set the fill color.
       range.format.fill.color = "#FFF2CC";
+
+      // Get the range of cells of high level data.
+      range = sheet.getRange("A2:E2");
+      range.format.fill.color = "#8EA9DB";
+
+      // Get the range of cells of high level data.
+      range = sheet.getRange("A3:E5");
+      range.format.fill.color = "#B4C6E7";
 
       if (Office.context.requirements.isSetSupported("ExcelApi", "1.2")) {
         sheet.getUsedRange().format.autofitColumns();
@@ -185,8 +191,6 @@ async function insertData() {
     console.log(error);
   }
 }
-
-
 
 const g = getGlobal();
 

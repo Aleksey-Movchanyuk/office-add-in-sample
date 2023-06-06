@@ -269,7 +269,44 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-
+								<Control xsi:type="Button" id="BtnZoom">
+									<Label resid="BtnZoom.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnZoom.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnZoom.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconZoom.16x16" />
+										<bt:Image size="32" resid="IconZoom.32x32" />
+										<bt:Image size="80" resid="IconZoom.80x80" />
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnZoom</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								<Control xsi:type="Button" id="BtnZoomOut">
+									<Label resid="BtnZoomOut.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnZoomOut.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnZoomOut.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="IconZoomOut.16x16" />
+										<bt:Image size="32" resid="IconZoomOut.32x32" />
+										<bt:Image size="80" resid="IconZoomOut.80x80" />
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnZoomOut</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
 							</Group>
 
 							<Group id="SimulationGroup">
@@ -439,6 +476,14 @@
 				<bt:Image id="IconParameters.32x32" DefaultValue="https://localhost:3000/assets/icon-parameters-32.png" />
 				<bt:Image id="IconParameters.80x80" DefaultValue="https://localhost:3000/assets/icon-parameters-80.png" />
 
+				<bt:Image id="IconZoom.16x16" DefaultValue="https://localhost:3000/assets/icon-zoom-16.png" />
+				<bt:Image id="IconZoom.32x32" DefaultValue="https://localhost:3000/assets/icon-zoom-32.png" />
+				<bt:Image id="IconZoom.80x80" DefaultValue="https://localhost:3000/assets/icon-zoom-80.png" />
+
+				<bt:Image id="IconZoomOut.16x16" DefaultValue="https://localhost:3000/assets/icon-zoom-out-16.png" />
+				<bt:Image id="IconZoomOut.32x32" DefaultValue="https://localhost:3000/assets/icon-zoom-out-32.png" />
+				<bt:Image id="IconZoomOut.80x80" DefaultValue="https://localhost:3000/assets/icon-zoom-out-80.png" />
+
 				<bt:Image id="IconSimulation.16x16" DefaultValue="https://localhost:3000/assets/icon-simulation-16.png" />
 				<bt:Image id="IconSimulation.32x32" DefaultValue="https://localhost:3000/assets/icon-simulation-32.png" />
 				<bt:Image id="IconSimulation.80x80" DefaultValue="https://localhost:3000/assets/icon-simulation-80.png" />
@@ -488,6 +533,8 @@
 				<bt:String id="BtnFilterData.Label" DefaultValue="Filter data" />
 				<bt:String id="BtnScope.Label" DefaultValue="Scope" />
 				<bt:String id="BtnParameters.Label" DefaultValue="Parameters" />
+				<bt:String id="BtnZoom.Label" DefaultValue="Zoom In" />
+				<bt:String id="BtnZoomOut.Label" DefaultValue="Zoom Out" />
 				<bt:String id="BtnSimulation.Label" DefaultValue="Simulation" />
 				<bt:String id="BtnMassiveSimulation.Label" DefaultValue="Massive Simulation" />
 				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane" />
@@ -507,6 +554,8 @@
 				<bt:String id="BtnFilterData.Tooltip" DefaultValue="Filter data from backend data service" />
 				<bt:String id="BtnScope.Tooltip" DefaultValue="Show scope dialog" />
 				<bt:String id="BtnParameters.Tooltip" DefaultValue="Show parameters dialog" />
+				<bt:String id="BtnZoom.Tooltip" DefaultValue="Zoom In" />
+				<bt:String id="BtnZoomOut.Tooltip" DefaultValue="Zoom Out" />
 				<bt:String id="BtnSimulation.Tooltip" DefaultValue="Start simulation" />
 				<bt:String id="BtnMassiveSimulation.Tooltip" DefaultValue="Show massive simulation dialog" />
 				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane" />

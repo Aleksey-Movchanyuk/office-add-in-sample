@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+const g = getGlobal();
+
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
@@ -16,6 +18,28 @@ Office.onReady((info) => {
     updateTaskPaneUI();
   }
 });
+
+
+Excel.run(function(context) {
+  var sheet = context.workbook.worksheets.getActiveWorksheet();
+  sheet.onSingleClicked.add(myEventHandler);
+
+  return context.sync();
+}).catch(errorHandlerFunction);
+
+
+let lastClickTime = null;
+
+function myEventHandler(event) {
+    console.log("Single click detected.");
+    let currentTime = new Date();
+    if (lastClickTime !== null && currentTime - lastClickTime < 500) {
+        console.log("Double click detected.");
+        lastClickTime = null; // reset the click time
+    } else {
+        lastClickTime = currentTime;
+    }
+}
 
 async function insertFilteredData() {
   try {
